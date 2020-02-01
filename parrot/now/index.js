@@ -1,5 +1,6 @@
 // Для асинхронной работы используется пакет micro.
 const { json } = require('micro');
+const parser = require('./parser')
 
 // Запуск асинхронного сервиса.
 module.exports = async (req, res) => {
@@ -14,10 +15,8 @@ module.exports = async (req, res) => {
             version,
             session,
             response: {
-                // В свойстве response.text возвращается исходная реплика пользователя.
-                // Если навык был активирован без дополнительной команды,
-                // пользователю нужно сказать "Hello!".
-                text: request.original_utterance || 'haha!',
+                
+                text: request.original_utterance || 'Hello!',
 
                 // Свойство response.end_session возвращается со значением false,
                 // чтобы диалог не завершался.
